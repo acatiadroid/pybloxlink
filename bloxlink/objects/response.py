@@ -9,7 +9,7 @@ class RobloxUserResponse:
         self.data = data
     
     @property
-    def roblox_user_id(self) -> Optional[int]:
+    def user_id(self) -> Optional[int]:
         """The Roblox account ID."""
         return int(self.data.get("robloxID"))
     
