@@ -9,20 +9,18 @@ class RobloxUserResponse:
         self.data = data
     
     @property
-    def roblox_id(self) -> Optional[int]:
+    def roblox_user_id(self) -> Optional[int]:
         """The Roblox account ID."""
         return int(self.data.get("robloxID"))
     
     @property
     def roblox(self) -> RobloxUser:
-        """The Discord user info.
-        Returns a RobloxUser object."""
+        """The Discord user info. Returns a RobloxUser object."""
         return RobloxUser(self.data.get("resolved", {}).get("roblox", {}))
     
     @property
     def discord(self) -> DiscordUser:
-        """The Discord user info.
-        Returns a DiscordUser object."""
+        """The Discord user info. Returns a DiscordUser object."""
         return DiscordUser(self.data.get("resolved", {}).get("discord", {}))
     
 class DiscordUserReponse:
@@ -31,8 +29,10 @@ class DiscordUserReponse:
         self.data = data
 
     @property
-    def discord_ids(self) -> list:
-        """A list of account linked to the given ID."""
-        return self.data.get("discordIDs")
-    
-    
+    def discord_users(self) -> list[DiscordUser]:
+        """A list of users associated with the given ID."""
+        users = []
+        for discord_id in self.data.get("resolved", {}).get("discord", {}):
+            users.append(DiscordUser(self.data.get("resolved", {}).get("discord", {}).get(str(discord_id))))
+
+        return users

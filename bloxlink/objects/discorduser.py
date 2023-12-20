@@ -45,7 +45,7 @@ class DiscordUser:
     @property
     def user(self) -> Optional[dict]:
         """The Discord users' account information."""
-        return self.data.get("roles")
+        return self.data.get("user")
     
     @property
     def mute(self) -> Optional[bool]:

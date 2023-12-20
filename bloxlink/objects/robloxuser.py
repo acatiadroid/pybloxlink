@@ -59,11 +59,6 @@ class RobloxUser:
         return self.data.get("value")
     
     @property
-    def placeVisits(self) -> Optional[dict]:
-        """The Roblox users' place visits count."""
-        return self.data.get("placeVisits")
-    
-    @property
     def place_visits(self) -> Optional[int]:
         """The Roblox users' place visits count."""
         return self.data.get("placeVisits")
@@ -87,5 +82,5 @@ class RobloxUser:
     def groups2(self) -> Optional[dict]:
         """The Roblox users' groups.
         
-        (this lists the groups using the group ID as the key as opposed to a list)"""
+        (this lists the groups in a dictionary using the group ID as the key as opposed to a list)"""
         return self.data.get("groupsv2")
