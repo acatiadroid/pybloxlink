@@ -52,7 +52,7 @@ class Request:
         return DiscordUserReponse(resp)
     
     async def _update_discord_user(headers: dict, discord_id: int, server_id: int):
-        resp = await _make_post_request(headers, UPDATE_DISCORD_USER_URL.format(discord_id, server_id))
+        resp = await _make_post_request(headers, UPDATE_DISCORD_USER_URL.format(server_id, discord_id))
 
         return resp
     
