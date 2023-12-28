@@ -16,18 +16,19 @@ def _check_exceptions(resp: dict, payload: dict, method: str):
     if payload.get("error"):
         return _raise_error_message(f"{method} request failed: {payload.get("error")}")
 
-async def _make_post_request(headers: str, url: str):
-    async with aiohttp.ClientSession(headers=headers) as session:
-        async with session.post(url) as resp:
+async def _make_post_request(headers: str, url: str, client: aiohttp.ClientSession):
+    async with client:
+        async with client.post(url, headers=headers, json={}) as resp:
+            resp.raise_for_status()
             payload = await resp.json()
 
             _check_exceptions(resp, payload, "POST")
 
     return payload
 
-async def _make_get_request(headers: str, url: str):
-    async with aiohttp.ClientSession(headers=headers) as session:
-        async with session.get(url) as resp:
+async def _make_get_request(headers: str, url: str, client: aiohttp.ClientSession):
+    async with client:
+        async with client.get(url, headers=headers) as resp:
             payload = await resp.json()
 
             _check_exceptions(resp, payload, "GET")
@@ -35,24 +36,28 @@ async def _make_get_request(headers: str, url: str):
     return payload
 
 class Request:
-    async def _get_roblox_user(headers: dict, discord_id: int, server_id: int = None):
+    def __init__(self, api_key):
+        self.client = aiohttp.ClientSession()
+        self.headers = {"Authorization": api_key}
+
+    async def _get_roblox_user(self, discord_id: int, server_id: int = None):
         if server_id:
-            resp = await _make_get_request(headers, RESOLVED_ROBLOX_USER_URL.format(server_id, discord_id))
+            resp = await _make_get_request(self.headers, RESOLVED_ROBLOX_USER_URL.format(server_id, discord_id), self.client)
         else:
-            resp = await _make_get_request(headers, GLOBAL_RESOLVED_ROBLOX_USER_URL.format(discord_id))
+            resp = await _make_get_request(self.headers, GLOBAL_RESOLVED_ROBLOX_USER_URL.format(discord_id), self.client)
 
         return RobloxUserResponse(resp)
     
-    async def _get_discord_user(headers: dict, roblox_id: int, server_id: int = None):
+    async def _get_discord_user(self, roblox_id: int, server_id: int = None):
         if server_id:
-            resp = await _make_get_request(headers, RESOLVED_DISCORD_IDS_URL.format(server_id, roblox_id))
+            resp = await _make_get_request(self.headers, RESOLVED_DISCORD_IDS_URL.format(server_id, roblox_id), self.client)
         else:
-            resp = await _make_get_request(headers, GLOBAL_RESOLVED_DISCORD_IDS_URL.format(roblox_id))
+            resp = await _make_get_request(self.headers, GLOBAL_RESOLVED_DISCORD_IDS_URL.format(roblox_id), self.client)
 
         return DiscordUserReponse(resp)
     
-    async def _update_discord_user(headers: dict, discord_id: int, server_id: int):
-        resp = await _make_post_request(headers, UPDATE_DISCORD_USER_URL.format(server_id, discord_id))
+    async def _update_discord_user(self, discord_id: int, server_id: int):
+        resp = await _make_post_request(self.headers, UPDATE_DISCORD_USER_URL.format(server_id, discord_id), self.client)
 
         return resp
     
