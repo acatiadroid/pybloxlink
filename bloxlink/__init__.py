@@ -6,4 +6,4 @@ __version__ = "0.2.0"
 
 from .client import Bloxlink
 from .objects import *
-from .exceptions import *
+from .exception import *
