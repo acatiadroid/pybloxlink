@@ -23,6 +23,9 @@ pip install -U pybloxlink
 ## Examples
 Some examples can be found in [examples.md](https://github.com/acatiadroid/pybloxlink/blob/main/examples.md).
 
+## Help
+If you need help, you can either make an [issue](https://github.com/acatiadroid/pybloxlink/issues/new) or join the Bloxlink server: https://discord.gg/bloxlink
+
 ## License
 This is licensed under MIT. Read the license [here](https://github.com/acatiadroid/pybloxlink/blob/main/LICENSE.txt).
 
