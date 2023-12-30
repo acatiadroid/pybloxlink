@@ -7,6 +7,9 @@ class RobloxUserResponse:
     """Represents a response from retrieving a Roblox user."""
     def __init__(self, data: dict):
         self.data = data
+
+    def __str__(self):
+        return str(self.user_id)
     
     @property
     def user_id(self) -> Optional[int]:
@@ -27,6 +30,9 @@ class DiscordUserReponse:
     """Represents a response from retrieving a Discord user."""
     def __init__(self, data: dict):
         self.data = data
+
+    def __iter__(self):
+        return iter(self.discord_users)
 
     @property
     def discord_users(self) -> list[DiscordUser]:
