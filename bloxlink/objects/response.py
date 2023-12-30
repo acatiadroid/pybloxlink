@@ -31,6 +31,9 @@ class DiscordUserReponse:
     def __init__(self, data: dict):
         self.data = data
 
+    def __str__(self):
+        return ",".join(self.data.get("resolved", {}).get("discord", {}))
+
     def __iter__(self):
         return iter(self.discord_users)
 
