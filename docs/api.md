@@ -39,8 +39,7 @@ The base class for all Bloxlink API interactions.
     Updates a Discord user in the specified server. This is equivalent to running /verify in a server.
     Returns the roles which have been added/removed and the new nickname as a dict.
     
-    Attributes:
-    
+    **Parameters:**
     * **discord_id (int)** - the ID of the Discord user you want to update.
     * **server_id (int)** - the ID of the server you want to update the user in.
 
