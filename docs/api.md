@@ -19,7 +19,6 @@ The base class for all Bloxlink API interactions.
     **Parameters:**
     * **discord_id (int)**: the Roblox ID of the user you want to find the Discord ID of.
     * **server_id (int)**: the ID of the server you want to search in.
-    
     \**if you intend on doing a global search (which required approval), do not include this argument.
     Otherwise, you must provide this argument.*
 
@@ -31,7 +30,6 @@ The base class for all Bloxlink API interactions.
     **Parameters:**   
     * **roblox_id (int)**: the ID of the Discord user you want to find the Roblox ID of.
     * **server_id (int)***: the ID of the server you want to search in.
-    
     \**if you intend on doing a global search (which required approval), do not include this argument.
     Otherwise, you must provide this argument.*
 
