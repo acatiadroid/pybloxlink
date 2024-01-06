@@ -5,8 +5,9 @@ from .discorduser import DiscordUser
 
 class RobloxUserResponse:
     """Represents a response from retrieving a Roblox user."""
-    def __init__(self, data: dict):
+    def __init__(self, data: dict, request_instance):
         self.data = data
+        self._request_instance = request_instance
 
     def __str__(self):
         return str(self.user_id)
@@ -19,7 +20,7 @@ class RobloxUserResponse:
     @property
     def roblox(self) -> RobloxUser:
         """The Discord user info. Returns a RobloxUser object."""
-        return RobloxUser(self.data.get("resolved", {}).get("roblox", {}))
+        return RobloxUser(self.data.get("resolved", {}).get("roblox", {}), self._request_instance)
     
     @property
     def discord(self) -> DiscordUser:

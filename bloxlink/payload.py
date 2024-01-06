@@ -44,7 +44,7 @@ class Request:
         else:
             resp = await self._make_get_request(GLOBAL_RESOLVED_ROBLOX_USER_URL.format(discord_id))
 
-        return RobloxUserResponse(resp)
+        return RobloxUserResponse(resp, self)
     
     async def _get_discord_user(self, roblox_id: int, server_id: int = None):
         if server_id:
