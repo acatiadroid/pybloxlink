@@ -7,7 +7,7 @@ requires = [
 [project]
 name = "pybloxlink"
 description = "An API wrapper for the Bloxlink API."
-readme = { file = "README.md" content-type = "text/x-rst" }
+readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE.txt" }
 requires-python = ">=3.8"
 authors = [{ name = "acatia" }]
@@ -19,8 +19,8 @@ classifiers = [
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
 ]
+dynamic = ["version"]
 
 [project.urls]
 Documentation = "https://acatiadroid.github.io/pybloxlink"
 GitHub = "https://github.com/acatiadroid/pybloxlink"
-dynamic = ["version"]
