@@ -21,7 +21,7 @@ pip install -U pybloxlink
 ```
 
 ## Examples
-Some examples can be found on the documentation, here: https://acatiadroid.github.io/pybloxlink/examples.html
+Some examples can be found in [examples.md](https://github.com/acatiadroid/pybloxlink/blob/main/examples.md).
 
 ## Help
 If you need help, you can either make an [issue](https://github.com/acatiadroid/pybloxlink/issues/new) or join the Bloxlink server: https://discord.gg/bloxlink

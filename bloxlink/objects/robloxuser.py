@@ -4,9 +4,8 @@ class RobloxUser:
     """Represents a Roblox user.
     
     This information is only retrieved if you have Bloxlink Premium."""
-    def __init__(self, data: dict, request_instance):
+    def __init__(self, data: dict):
         self.data = data
-        self._request_instance = request_instance
 
     def __str__(self) -> Optional[str]:
         return str(self.data.get("name"))
@@ -85,56 +84,3 @@ class RobloxUser:
         
         (this lists the groups in a dictionary using the group ID as the key as opposed to a list)"""
         return self.data.get("groupsv2")
-    
-    async def get_avatar_headshot_url(self) -> Optional[str]:
-        """Makes a request to Roblox's API for the avatar headshot image URL.
-        Returns None if avatar can't be retrieved."""
-        url = self.avatar.get("headshotThumbnail", None)
-
-        if not url:
-            return None
-        
-        req = await self._request_instance._make_get_request(url)
-        
-        try:
-            data = req.get("data")[0]
-        except TypeError:
-            return None
-    
-        return data.get("imageUrl", None)
-    
-    async def get_avatar_bust_url(self) -> Optional[str]:
-        """Makes a request to Roblox's API for the avatar bust image URL.
-        Returns None if avatar can't be retrieved."""
-        url = self.avatar.get("bustThumbnail", None)
-
-        if not url:
-            return None
-        
-        req = await self._request_instance._make_get_request(url)
-        
-        try:
-            data = req.get("data")[0]
-        except TypeError:
-            return None
-    
-        return data.get("imageUrl", None)
-    
-    async def get_avatar_fullbody_url(self) -> Optional[str]:
-        """Makes a request to Roblox's API for the avatar full body image URL.
-        Returns None if avatar can't be retrieved."""
-        url = self.avatar.get("fullBody", None)
-
-        if not url:
-            return None
-        
-        req = await self._request_instance._make_get_request(url)
-        
-        try:
-            data = req.get("data")[0]
-        except TypeError:
-            return None
-    
-        return data.get("imageUrl", None)
-
-        

@@ -19,7 +19,7 @@ The base class for all Bloxlink API interactions.
     **Parameters:**
     * **discord_id (int)**: the Roblox ID of the user you want to find the Discord ID of.
     * **server_id (int)**: the ID of the server you want to search in.
-
+    
     \**if you intend on doing a global search (which required approval), do not include this argument.
     Otherwise, you must provide this argument.*
 
@@ -39,7 +39,8 @@ The base class for all Bloxlink API interactions.
     Updates a Discord user in the specified server. This is equivalent to running /verify in a server.
     Returns the roles which have been added/removed and the new nickname as a dict.
     
-    **Parameters:**
+    Attributes:
+    
     * **discord_id (int)** - the ID of the Discord user you want to update.
     * **server_id (int)** - the ID of the server you want to update the user in.
 
@@ -85,22 +86,6 @@ This information is only retrieved if you have Bloxlink Premium.
 * **external_app_display_name (Optional[str])**: THe Roblox users' external app display name.
 * **has_verified_badge (Optional[str])**: Whether the user has a verified badge.
 * **groups2 (Optional[str])**: The Roblox users' groups. (this lists the groups in a dictionary using the group ID as the key as opposed to a list)
-
-**Methods:**
-* **await get_avatar_headshot_url()**
-
-    Makes a request to Roblox's API for the avatar headshot image URL.
-        Returns None if avatar can't be retrieved.
-
-* **await get_avatar_bust_url()**
-
-    Makes a request to Roblox's API for the avatar bust image URL.
-        Returns None if avatar can't be retrieved.
-
-* **await get_avatar_fullbody_url()**
-
-    Makes a request to Roblox's API for the avatar full body image URL.
-        Returns None if avatar can't be retrieved.
 
 ## Responses
 `class bloxlink.RobloxUserResponse`
