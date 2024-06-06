@@ -8,7 +8,7 @@
 * [API Reference](api.md)
 * [GitHub Page](https://github.com/acatiadroid/pybloxlink)
 * [PyPI Page](https://pypi.org/project/pybloxlink/)
-* [Examples](examples.md)
+* [Examples](https://acatiadroid.github.io/pybloxlink/examples.html)
 
 ## About
 PyBloxlink is an async API wrapper for the [Bloxlink](https://blox.link) API.
