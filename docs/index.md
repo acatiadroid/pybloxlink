@@ -4,12 +4,6 @@
     <img src="https://img.shields.io/pypi/v/pybloxlink.svg">
 </div>
 
-## Useful links
-* [API Reference](api.md)
-* [GitHub Page](https://github.com/acatiadroid/pybloxlink)
-* [PyPI Page](https://pypi.org/project/pybloxlink/)
-* [Examples](https://acatiadroid.github.io/pybloxlink/examples.html)
-
 ## About
 PyBloxlink is an async API wrapper for the [Bloxlink](https://blox.link) API.
 
@@ -27,7 +21,7 @@ pip install -U pybloxlink
 ```
 
 ## Examples
-Some examples can be found in [examples.md](https://github.com/acatiadroid/pybloxlink/blob/main/examples.md).
+Some examples can be found here: https://acatiadroid.github.io/pybloxlink/examples.html
 
 ## Help
 If you need help, you can either make an [issue](https://github.com/acatiadroid/pybloxlink/issues/new) or join the Bloxlink server: https://discord.gg/bloxlink
