@@ -4,12 +4,6 @@
     <img src="https://img.shields.io/pypi/v/pybloxlink.svg">
 </div>
 
-## Useful links
-* [API Reference](api.md)
-* [GitHub Page](https://github.com/acatiadroid/pybloxlink)
-* [PyPI Page](https://pypi.org/project/pybloxlink/)
-* [Examples](examples.md)
-
 ## About
 PyBloxlink is an async API wrapper for the [Bloxlink](https://blox.link) API.
 
