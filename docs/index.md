@@ -26,6 +26,13 @@ To install a full release of the library, run the command below:
 pip install -U pybloxlink
 ```
 
+## Don't forget...
+It is important that you close the client session once you are done with using PyBloxlink. If you do not, you're likely going to get `Unclosed conntor`/`Unclosed client session` errors.
+
+This is to ensure there are no pending tasks awaiting completion.
+
+Closing the client is as simple as using [`Bloxlink.close`]().
+
 ## Examples
 Some examples can be found here: https://acatiadroid.github.io/pybloxlink/examples.html
 

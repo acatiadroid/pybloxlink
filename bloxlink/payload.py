@@ -19,24 +19,34 @@ def _check_exceptions(resp: dict, payload: dict, method: str):
 class Request:
     def __init__(self, api_key):
         self.headers = {"Authorization": api_key}
+        self.client = None
+
+    async def close(self):
+        if self.client:
+            await self.client.close()
+            self.client = None
 
     async def _make_post_request(self, url: str):
-        async with aiohttp.ClientSession() as client:
-            async with client.post(url, headers=self.headers, json={}) as resp:  # for some reason it needs to recieve an empty payload
-                payload = await resp.json()
+        if not self.client:
+            self.client = aiohttp.ClientSession()
+        
+        async with self.client.post(url, headers=self.headers, json={}) as resp:  # for some reason it needs to recieve an empty payload
+            payload = await resp.json()
 
-                _check_exceptions(resp, payload, "POST")
+            _check_exceptions(resp, payload, "POST")
 
-                return payload
+            return payload
         
     async def _make_get_request(self, url: str):
-        async with aiohttp.ClientSession() as client:
-            async with client.get(url, headers=self.headers) as resp:
-                payload = await resp.json()
+        if not self.client:
+            self.client = aiohttp.ClientSession()
+        
+        async with self.client.get(url, headers=self.headers) as resp:
+            payload = await resp.json()
 
-                _check_exceptions(resp, payload, "GET")
+            _check_exceptions(resp, payload, "GET")
 
-                return payload
+            return payload
 
     async def _get_roblox_user(self, discord_id: int, server_id: int = None):
         if server_id:

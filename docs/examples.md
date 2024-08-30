@@ -93,3 +93,24 @@ bot.run("token")
 ### Bot in use:
 
 ![](https://i.imgur.com/5wK9CMP.png)
+
+## Closing the client
+```py
+import asyncio
+from bloxlink import Bloxlink
+
+bloxlink = Bloxlink("...")
+
+async def main():
+    user1 = await bloxlink.lookup_discord_user(...)
+    print(user1)
+
+    user2 = await bloxlink.lookup_roblox_user(...)
+    print(user2)
+
+    asyncio.sleep(2)
+
+    await bloxlink.close() # we are done with using it, so we .close() it.
+
+asyncio.run(main())
+```    

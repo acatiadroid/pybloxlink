@@ -11,6 +11,11 @@ The base class for all Bloxlink API interactions.
 * **api_key (str)**: The API key from the Bloxlink developer page.
 
 **Methods:**
+* **await close()**
+    Closes the client connection safely. You should call this when you are done with the API.
+        
+    See `aiohttp.ClientSession.close` for more information.
+
 * **await lookup_roblox_user(discord_id, server_id = None)**
     
     Looks up a Roblox user from the given Discord ID (and optional server ID).

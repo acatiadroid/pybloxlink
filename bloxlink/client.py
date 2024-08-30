@@ -6,6 +6,12 @@ class Bloxlink:
     def __init__(self, api_key: str):
         self.request = Request(api_key)
 
+    async def close(self):
+        """Closes the client connection safely. You should call this when you are done with the API.
+        
+        See `aiohttp.ClientSession.close` for more information."""
+        await self.request.close()
+
     async def lookup_roblox_user(self, discord_id: int, server_id: int = None) -> RobloxUserResponse:
         """Looks up a Roblox user from the given Discord ID (and optional server ID).
         Returns the Roblox user ID.
